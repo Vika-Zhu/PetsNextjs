@@ -4,7 +4,11 @@ import{RightHeader} from '../components/RightHeader/RightHeader';
 import{SubHeader} from '../components/SubHeader/';
 import{Gallery} from '../components/Gallery/Gallery';
 import{ModalUpload} from '../components/ModalUpload/ModalUpload';
+'use client';
 import{ModalHome} from '../components/ModalHome/ModalHome';
+
+
+
 
 const galleryItems = [{id: 1, breed: 'Abyssinian', src:"img/Cat_gallery/1_cat_big.jpeg"},
     {id: 2, breed: 'American Wirehair', src:"img/Cat_gallery/2_cat.jpeg" },
@@ -114,7 +118,8 @@ export default function Home() {
             {ModalHome()} 
         </div>
     </div>
-</main>
+    </main>
+
 
   )
 }

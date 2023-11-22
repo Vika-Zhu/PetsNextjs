@@ -1,6 +1,7 @@
 import './css/style.css'
 import './css/globals.css'
 
+import { ReduxProvider } from './GlobalRedux/provider'
 
 import type { Metadata } from 'next'
 import { Jost } from 'next/font/google'
@@ -19,7 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+        <body className={inter.className}>
+           <ReduxProvider> {children} </ReduxProvider> 
+        </body>
+  
     </html>
   )
 }

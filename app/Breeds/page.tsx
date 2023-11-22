@@ -1,3 +1,4 @@
+'use client';
 
 import{MainLeft} from '../components/MainLeft/MainLeft';
 import{RightHeader} from '../components/RightHeader/RightHeader';
@@ -16,16 +17,16 @@ const galleryItems = [{id: 1, breed: 'Abyssinian', src:"img/Cat_gallery/1_cat_bi
     {id: 8, breed: 'Abyssinian', src:"img/Cat_gallery/8_cat_big.jpeg",size: 'long'},
     {id: 9, breed: 'American Curl', src:"img/Cat_gallery/9_cat.jpeg", size: 'standard' },
     {id: 10, breed: 'American Curl', src:"img/Cat_gallery/10_cat.jpeg",size: 'big-revers'},
-    {id: 1, breed: 'Abyssinian', src:"img/Cat_gallery/1_cat_big.jpeg", size: 'long'},
-    {id: 2, breed: 'American Wirehair', src:"img/Cat_gallery/2_cat.jpeg", size: 'standard'},
-    {id: 3, breed: 'American Wirehair', src:"img/Cat_gallery/3_cat_big.jpeg", size: 'standard'},
-    {id: 4, breed: 'American Wirehair', src:"img/Cat_gallery/5_cat_big.jpeg", size: 'big'},
-    {id: 5, breed: 'Abyssinian', src:"img/Cat_gallery/4_cat.jpeg", size: 'standard'},
-    {id: 6, breed: 'Abyssinian', src:"img/Cat_gallery/6_cat.jpeg", size: 'standard'},
-    {id: 7, breed: 'American Curl', src:"img/Cat_gallery/7_cat.jpeg", size: 'standard'},
-    {id: 8, breed: 'Abyssinian', src:"img/Cat_gallery/8_cat_big.jpeg",size: 'long'},
-    {id: 9, breed: 'American Curl', src:"img/Cat_gallery/9_cat.jpeg", size: 'standard' },
-    {id: 10, breed: 'American Curl', src:"img/Cat_gallery/10_cat.jpeg",size: 'big-revers'}   
+    {id: 11, breed: 'Abyssinian', src:"img/Cat_gallery/1_cat_big.jpeg", size: 'long'},
+    {id: 12, breed: 'American Wirehair', src:"img/Cat_gallery/2_cat.jpeg", size: 'standard'},
+    {id: 13, breed: 'American Wirehair', src:"img/Cat_gallery/3_cat_big.jpeg", size: 'standard'},
+    {id: 14, breed: 'American Wirehair', src:"img/Cat_gallery/5_cat_big.jpeg", size: 'big'},
+    {id: 15, breed: 'Abyssinian', src:"img/Cat_gallery/4_cat.jpeg", size: 'standard'},
+    {id: 16, breed: 'Abyssinian', src:"img/Cat_gallery/6_cat.jpeg", size: 'standard'},
+    {id: 17, breed: 'American Curl', src:"img/Cat_gallery/7_cat.jpeg", size: 'standard'},
+    {id: 18, breed: 'Abyssinian', src:"img/Cat_gallery/8_cat_big.jpeg",size: 'long'},
+    {id: 19, breed: 'American Curl', src:"img/Cat_gallery/9_cat.jpeg", size: 'standard' },
+    {id: 20, breed: 'American Curl', src:"img/Cat_gallery/10_cat.jpeg",size: 'big-revers'}   
 ]
 
 export default function Home() {

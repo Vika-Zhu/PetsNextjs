@@ -1,13 +1,30 @@
+'use client';
+
+import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { textAdd } from '../../GlobalRedux/headerSearchSlice';
+
 export function RightHeader(){
+    const dispatch = useDispatch();
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    const handleInputChange = (event:any) => {
+        const newText = inputRef.current?.value || '';
+        dispatch(textAdd(newText));
+        console.log(newText);
+      };
+
+
+
     return ( <div className="right-header header">
     <div className="header__burger">
         <span></span>
     </div>
     <div className="header_search">
-        <form  className="search-form" action="">
-            <input className="search-input"  type="text" placeholder="Search for breeds by name"/>
+        <div  className="search-form">
+            <input ref={inputRef} className="search-input"  type="text" placeholder="Search for breeds by name"  onInput={handleInputChange} />
             <button className="search-btn"></button>
-        </form>
+        </div>
     </div>
     <div className="header_links">
         <a className="link link-likes svg" href=""></a>

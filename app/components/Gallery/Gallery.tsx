@@ -1,17 +1,10 @@
 
 
-// interface galleryProps{
-//     galleryItem: Array <{
-//         id: number;
-//         breed: string;
-//         src: string;
-//         size: string;
-//     }>
-// }
 
 function galleryItem(item:any){
+    
     return(  
-         <div key = {item.id} className = "gallery__item" > 
+         <div key = {item.id + 'galleryItem'} className = "gallery__item" > 
             <img src={item.src} alt=""/>
             <button className="gallery_btn-like svg"></button>
             <div className="item-btn btn">

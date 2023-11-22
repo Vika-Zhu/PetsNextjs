@@ -259,6 +259,11 @@ body{
     background-color:#FF868E;
 }
 
+.header_links .link{
+    pointer-events: none;
+}
+
+
 .link-likes {
     background-image: url(/img/svg/actions/like.svg);
 }
