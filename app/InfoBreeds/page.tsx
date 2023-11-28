@@ -1,4 +1,4 @@
-
+'use client';
 
 import{MainLeft} from '../components/MainLeft/MainLeft';
 import{RightHeader} from '../components/RightHeader/RightHeader';
@@ -6,6 +6,7 @@ import{SubHeader} from '../components/SubHeader';
 import{ModalHome} from '../components/ModalHome/ModalHome';
 
 export default function Home() {
+const tabname = "BREEDS";
   return (
     <main className="main">
         <div className="container right-blok">
@@ -15,7 +16,7 @@ export default function Home() {
                     {RightHeader()}
                     <div className="right__content breeds">
                         <div className="content__header">
-                            {SubHeader()}
+                            {SubHeader(tabname)}
                             <div className="header__badge-id">28</div>
                         </div>
                         <div className="breed-foto">

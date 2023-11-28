@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { textAdd } from '../../GlobalRedux/headerSearchSlice';
+import { textAdd } from '../../GlobalRedux/filterGallerySlice';
 
 export function RightHeader(){
     const dispatch = useDispatch();
@@ -11,6 +11,7 @@ export function RightHeader(){
     const handleInputChange = (event:any) => {
         const newText = inputRef.current?.value || '';
         dispatch(textAdd(newText));
+
         console.log(newText);
       };
 

@@ -1,3 +1,6 @@
+'use client';
+
+
 import{MainLeft} from '../components/MainLeft/MainLeft';
 import{RightHeader} from '../components/RightHeader/RightHeader';
 import{SubHeader} from '../components/SubHeader';

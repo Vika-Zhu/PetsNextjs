@@ -1,11 +1,13 @@
 
 
 import { configureStore } from "@reduxjs/toolkit";
-import headerSearchSlice from "./headerSearchSlice";
+import filterGallerySlice from "./filterGallerySlice";
+// import filterSlice from "./filterSlice";
 
 export const store = configureStore({
     reducer: {
-        textSearch: headerSearchSlice
+        breed: filterGallerySlice,
+        // filterOptions: filterSlice
         
     },
 })

@@ -5,29 +5,43 @@ import{RightHeader} from '../components/RightHeader/RightHeader';
 import{SubHeader} from '../components/SubHeader';
 import{Gallery} from '../components/Gallery/Gallery';
 import{ModalHome} from '../components/ModalHome/ModalHome';
+import { FilterBreed } from '../components/FilterBreed/FilterBreed';
 
 
-const galleryItems = [{id: 1, breed: 'Abyssinian', src:"img/Cat_gallery/1_cat_big.jpeg", size: 'long'},
-    {id: 2, breed: 'American Wirehair', src:"img/Cat_gallery/2_cat.jpeg", size: 'standard'},
-    {id: 3, breed: 'American Wirehair', src:"img/Cat_gallery/3_cat_big.jpeg", size: 'standard'},
-    {id: 4, breed: 'American Wirehair', src:"img/Cat_gallery/5_cat_big.jpeg", size: 'big'},
-    {id: 5, breed: 'Abyssinian', src:"img/Cat_gallery/4_cat.jpeg", size: 'standard'},
-    {id: 6, breed: 'Abyssinian', src:"img/Cat_gallery/6_cat.jpeg", size: 'standard'},
-    {id: 7, breed: 'American Curl', src:"img/Cat_gallery/7_cat.jpeg", size: 'standard'},
-    {id: 8, breed: 'Abyssinian', src:"img/Cat_gallery/8_cat_big.jpeg",size: 'long'},
-    {id: 9, breed: 'American Curl', src:"img/Cat_gallery/9_cat.jpeg", size: 'standard' },
-    {id: 10, breed: 'American Curl', src:"img/Cat_gallery/10_cat.jpeg",size: 'big-revers'},
-    {id: 11, breed: 'Abyssinian', src:"img/Cat_gallery/1_cat_big.jpeg", size: 'long'},
-    {id: 12, breed: 'American Wirehair', src:"img/Cat_gallery/2_cat.jpeg", size: 'standard'},
-    {id: 13, breed: 'American Wirehair', src:"img/Cat_gallery/3_cat_big.jpeg", size: 'standard'},
-    {id: 14, breed: 'American Wirehair', src:"img/Cat_gallery/5_cat_big.jpeg", size: 'big'},
-    {id: 15, breed: 'Abyssinian', src:"img/Cat_gallery/4_cat.jpeg", size: 'standard'},
-    {id: 16, breed: 'Abyssinian', src:"img/Cat_gallery/6_cat.jpeg", size: 'standard'},
-    {id: 17, breed: 'American Curl', src:"img/Cat_gallery/7_cat.jpeg", size: 'standard'},
-    {id: 18, breed: 'Abyssinian', src:"img/Cat_gallery/8_cat_big.jpeg",size: 'long'},
-    {id: 19, breed: 'American Curl', src:"img/Cat_gallery/9_cat.jpeg", size: 'standard' },
-    {id: 20, breed: 'American Curl', src:"img/Cat_gallery/10_cat.jpeg",size: 'big-revers'}   
+const galleryItems = [{id: 1, breed: 'Abyssinian', src:"img/Cat_gallery/1_cat_big.jpeg"},
+    {id: 2, breed: 'American Wirehair', src:"img/Cat_gallery/2_cat.jpeg" },
+    {id: 3, breed: 'American Wirehair', src:"img/Cat_gallery/3_cat_big.jpeg"},
+    {id: 4, breed: 'American Wirehair', src:"img/Cat_gallery/5_cat_big.jpeg"},
+    {id: 5, breed: 'Abyssinian', src:"img/Cat_gallery/4_cat.jpeg"},
+    {id: 6, breed: 'Bengal', src:"img/Cat_gallery/6_cat.jpeg"},
+    {id: 7, breed: 'American Curl', src:"img/Cat_gallery/7_cat.jpeg"},
+    {id: 8, breed: 'Bengal', src:"img/Cat_gallery/8_cat_big.jpeg"},
+    {id: 9, breed: 'American Curl', src:"img/Cat_gallery/9_cat.jpeg" },
+    {id: 10, breed: 'American Curl', src:"img/Cat_gallery/10_cat.jpeg"},
+    {id: 11, breed: 'Abyssinian', src:"img/Cat_gallery/1_cat_big.jpeg",},
+    {id: 12, breed: 'American Wirehair', src:"img/Cat_gallery/2_cat.jpeg"},
+    {id: 13, breed: 'American Wirehair', src:"img/Cat_gallery/3_cat_big.jpeg"},
+    {id: 14, breed: 'Bengal', src:"img/Cat_gallery/5_cat_big.jpeg"},
+    {id: 15, breed: 'Abyssinian', src:"img/Cat_gallery/4_cat.jpeg"},
+    {id: 16, breed: 'Abyssinian', src:"img/Cat_gallery/6_cat.jpeg"},
+    {id: 17, breed: 'American Curl', src:"img/Cat_gallery/7_cat.jpeg"},
+    {id: 18, breed: 'Abyssinian', src:"img/Cat_gallery/8_cat_big.jpeg"},
+    {id: 19, breed: 'American Curl', src:"img/Cat_gallery/9_cat.jpeg" },
+    {id: 20, breed: 'British Curl', src:"img/Cat_gallery/10_cat.jpeg"}   
 ]
+
+const breeds = [{breed: 'All Breeds'},
+    {breed: 'Abyssinian'},
+    {breed: 'Aegean'},
+    {breed: 'American Bobtail'},
+    {breed: 'American Curl'},
+    {breed: 'American Shorthair'},
+    {breed: 'American Wirehair'},
+    {breed: 'Bengal'},
+    {breed: 'British Curl'},
+    {breed: 'Basenji'},
+]
+
 
 export default function Home() {
     const tabname = "BREEDS";
@@ -42,35 +56,8 @@ export default function Home() {
                         <div className="content__header">
                             {SubHeader({tabname})}
                             <div className="filter__select filter__select-breeds"> 
-                                <a className="filter__select-option" href="">All breeds</a>
-                                <div className="filter__list-wrapper">
-                                    <ul className="filter__list-dropdown">
-                                        <li className="filter__item">
-                                            <a className="filter__link" href="">All breeds</a>
-                                        </li>
-                                        <li className="filter__item">
-                                            <a className="filter__link" href="">Abyssinian</a>
-                                        </li>
-                                        <li className="filter__item">
-                                            <a className="filter__link" href="">Aegean</a>
-                                        </li>
-                                        <li className="filter__item">
-                                            <a className="filter__link" href="">American Bobtail</a>
-                                        </li>
-                                        <li className="filter__item">
-                                            <a className="filter__link" href="">American Curl</a>
-                                        </li>
-                                        <li className="filter__item">
-                                            <a className="filter__link" href="">American Shorthair</a>
-                                        </li>
-                                        <li className="filter__item">
-                                            <a className="filter__link" href="">American Wirehair</a>
-                                        </li>
-                                        <li className="filter__item">
-                                            <a className="filter__link" href="">...</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <div className="filter__select-option">All breeds</div>
+                                {FilterBreed(breeds)}
                             </div>
                             <div className="filter__select filter__select--limit-img">
                                 <div className="filter__select-option" >Limit: 5</div>
