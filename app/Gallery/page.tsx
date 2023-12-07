@@ -6,43 +6,50 @@ import{SubHeader} from '../components/SubHeader/';
 import{Gallery} from '../components/Gallery/Gallery';
 import{ModalUpload} from '../components/ModalUpload/ModalUpload';
 import { FilterBreed } from '../components/FilterBreed/FilterBreed';
-
+import { FilterImageItems } from '../components/FilterImageItems/FilterImageItems';
 import{ModalHome} from '../components/ModalHome/ModalHome';
+import { AlphaSortSelector } from '../components/AlphaSortSelector/AlphaSortSelector';
+import { FilterTypeImage } from '../components/FilterTypeImage/FilterTypeImage';
 
 
-const galleryItems = [{id: 1, breed: 'Abyssinian', src:"img/Cat_gallery/1_cat_big.jpeg"},
-    {id: 2, breed: 'American Wirehair', src:"img/Cat_gallery/2_cat.jpeg" },
-    {id: 3, breed: 'American Wirehair', src:"img/Cat_gallery/3_cat_big.jpeg"},
-    {id: 4, breed: 'American Wirehair', src:"img/Cat_gallery/5_cat_big.jpeg"},
-    {id: 5, breed: 'Abyssinian', src:"img/Cat_gallery/4_cat.jpeg"},
-    {id: 6, breed: 'Bengal', src:"img/Cat_gallery/6_cat.jpeg"},
-    {id: 7, breed: 'American Curl', src:"img/Cat_gallery/7_cat.jpeg"},
-    {id: 8, breed: 'Bengal', src:"img/Cat_gallery/8_cat_big.jpeg"},
-    {id: 9, breed: 'American Curl', src:"img/Cat_gallery/9_cat.jpeg" },
-    {id: 10, breed: 'American Curl', src:"img/Cat_gallery/10_cat.jpeg"},
-    {id: 11, breed: 'Abyssinian', src:"img/Cat_gallery/1_cat_big.jpeg",},
-    {id: 12, breed: 'American Wirehair', src:"img/Cat_gallery/2_cat.jpeg"},
-    {id: 13, breed: 'American Wirehair', src:"img/Cat_gallery/3_cat_big.jpeg"},
-    {id: 14, breed: 'Bengal', src:"img/Cat_gallery/5_cat_big.jpeg"},
-    {id: 15, breed: 'Abyssinian', src:"img/Cat_gallery/4_cat.jpeg"},
-    {id: 16, breed: 'Abyssinian', src:"img/Cat_gallery/6_cat.jpeg"},
-    {id: 17, breed: 'American Curl', src:"img/Cat_gallery/7_cat.jpeg"},
-    {id: 18, breed: 'Abyssinian', src:"img/Cat_gallery/8_cat_big.jpeg"},
-    {id: 19, breed: 'American Curl', src:"img/Cat_gallery/9_cat.jpeg" },
-    {id: 20, breed: 'British Curl', src:"img/Cat_gallery/10_cat.jpeg"}   
+const galleryItems = [{id: 1, idBreeds: 1, breed: 'Abyssinian', src:"img/Cat_gallery/1_cat_big.jpeg", type: 'jpg'},
+    {id: 2,  idBreeds: 6, breed: 'American Wirehair', src:"img/Cat_gallery/2_cat.jpeg", type: 'gif' },
+    {id: 3,  idBreeds: 6, breed: 'American Wirehair', src:"img/Cat_gallery/3_cat_big.jpeg", type: 'jpg'},
+    {id: 4,  idBreeds: 6, breed: 'American Wirehair', src:"img/Cat_gallery/5_cat_big.jpeg", type: 'gif'},
+    {id: 5,  idBreeds: 1, breed: 'Abyssinian', src:"img/Cat_gallery/4_cat.jpeg", type: 'gif'},
+    {id: 6,  idBreeds: 7, breed: 'Bengal', src:"img/Cat_gallery/6_cat.jpeg", type: 'gif'},
+    {id: 7,  idBreeds: 4, breed: 'American Curl', src:"img/Cat_gallery/7_cat.jpeg", type: 'gif'},
+    {id: 8,  idBreeds: 7, breed: 'Bengal', src:"img/Cat_gallery/8_cat_big.jpeg", type: 'gif'},
+    {id: 9,  idBreeds: 4, breed: 'American Curl', src:"img/Cat_gallery/9_cat.jpeg", type: 'jpg'},
+    {id: 10, idBreeds: 4,  breed: 'American Curl', src:"img/Cat_gallery/10_cat.jpeg", type: 'jpg'},
+    {id: 11, idBreeds: 1,  breed: 'Abyssinian', src:"img/Cat_gallery/1_cat_big.jpeg", type: 'jpg'},
+    {id: 12, idBreeds: 6,  breed: 'American Wirehair', src:"img/Cat_gallery/2_cat.jpeg", type: 'jpg'},
+    {id: 13, idBreeds: 6,  breed: 'American Wirehair', src:"img/Cat_gallery/3_cat_big.jpeg", type: 'jpg'},
+    {id: 14, idBreeds: 7,  breed: 'Bengal', src:"img/Cat_gallery/5_cat_big.jpeg", type: 'gif'},
+    {id: 15, idBreeds: 1,  breed: 'Abyssinian', src:"img/Cat_gallery/4_cat.jpeg", type: 'jpg'},
+    {id: 16, idBreeds: 1,  breed: 'Abyssinian', src:"img/Cat_gallery/6_cat.jpeg", type: 'gif'},
+    {id: 17, idBreeds: 4,  breed: 'American Curl', src:"img/Cat_gallery/7_cat.jpeg", type: 'gif'},
+    {id: 18, idBreeds: 1,  breed: 'Abyssinian', src:"img/Cat_gallery/8_cat_big.jpeg", type: 'jpg'},
+    {id: 19, idBreeds: 4,  breed: 'American Curl', src:"img/Cat_gallery/9_cat.jpeg", type: 'jpg' },
+    {id: 20, idBreeds: 8,  breed: 'British Curl', src:"img/Cat_gallery/10_cat.jpeg", type: 'jpg'}   
 ]
 
-const breeds = [{breed: 'All Breeds'},
-    {breed: 'Abyssinian'},
-    {breed: 'Aegean'},
-    {breed: 'American Bobtail'},
-    {breed: 'American Curl'},
-    {breed: 'American Shorthair'},
-    {breed: 'American Wirehair'},
-    {breed: 'Bengal'},
-    {breed: 'British Curl'},
-    {breed: 'Basenji'},
+const breeds = [
+    {breed: 'Abyssinian', id: 1},
+    {breed: 'Aegean', id: 2},
+    {breed: 'American Bobtail', id: 3},
+    {breed: 'American Curl', id: 4},
+    {breed: 'American Shorthair', id: 5},
+    {breed: 'American Wirehair', id: 6},
+    {breed: 'Bengal', id: 7},
+    {breed: 'British Curl', id: 8},
+    {breed: 'Basenji', id: 9},
 ]
+
+const limitOptions = [5, 10, 15, 20];
+const limitText = '$ items per page';
+
+const defaultSelectedBreed = 'None';
 
 export default function Home() {
     const tabname = "GALLERY";
@@ -62,44 +69,26 @@ export default function Home() {
                         <div className="filter-panel_top">
                             <div className="filter-section">
                                 <label className="filter-label" htmlFor="">ORDER</label>
-                                <div className="filter_section-option">Random</div>
-                                <ul className="filter__list-dropdown filter_list-dropdown">
-                                    <li data-value="random">Random</li>
-                                    <li data-value="desc">Desc</li>
-                                    <li data-value="asc">Asc</li>
-                                </ul>
+                                {AlphaSortSelector()}
                             </div>
                             <div className="filter-section">
                                 <label className="filter-label" htmlFor="">TYPE</label>
-                                <div className="filter_section-option">Static</div>
-                                <ul className="filter__list-dropdown filter_list-dropdown ">
-                                    <li data-value="all">All</li>
-                                    <li data-value="static">Static</li>
-                                    <li data-value="animated">Animated</li>
-                                </ul>
+                                {FilterTypeImage()}
                             </div>
                         </div>
                         <div className="filter-panel_bottom">
                             <div className="filter-section filter-section-breed">
                                 <label className="filter-label" htmlFor="">BREED</label>
-                                <input className="filter_section-option breed-select" type="text" placeholder="None"/>
-                                {FilterBreed(breeds)}
+                                {FilterBreed({breed:breeds, defaultSelectedBreed:defaultSelectedBreed})}
                             </div>
                             <div className="filter-section">
                                 <label className="filter-label" htmlFor="">LIMIT</label>
-                                <div className="filter_section-option">5 items per page</div>
-                                <ul className="filter__list-dropdown filter_list-dropdown">
-                                    <li data-value="5 items per page">5 items per page</li>
-                                    <li data-value="10 items per page">10 items per page</li>
-                                    <li data-value="15 items per page">15 items per page</li>
-                                    <li data-value="20 items per page">20 items per page</li>
-                                </ul>
+                                {FilterImageItems({options:limitOptions, text:limitText})}
                             </div>
                             <button className="filter-btn filter-section"></button>
                         </div>
                     </div>
                     {Gallery(galleryItems)}
-
                 </div>
             </div>
             {ModalUpload()}
@@ -107,7 +96,5 @@ export default function Home() {
         </div>
     </div>
     </main>
-
-
   )
 }

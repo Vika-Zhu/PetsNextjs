@@ -519,7 +519,7 @@ body{
     font-size: 16px;
     line-height: 150%;
     left: 1px;
-    top: 64px;
+    top: 5px;
 }
 
 
@@ -572,42 +572,47 @@ body{
 .filter__select--limit-img {
     width: 101px;
 }
+.filter__buttons{
+    height: 40px;
+}
 
 .filter__btn-sort {
     border-radius: 10px;
     background: #F8F8F7;
     width: 40px;
     height: 40px;
-   
 }
-.filter__btn--sort-asc {
+
+.filter__buttons button:nth-child(1){
     background-image: url(/img/svg/breeds/sort_z_a.svg);
     background-repeat: no-repeat;
     background-position: 64% 50%;
+    margin-right: 10px;
 }
-.filter__button--sort-desc {
+
+.filter__buttons button:nth-child(2){
     background-image: url(/img/svg/breeds/sort_a-z.svg);
     background-repeat: no-repeat;
     background-position: 69% 55%;
 }
 
-.filter__btn--sort-asc:hover{
+.filter__buttons button:nth-child(1):hover{
     background-image: url(/img/svg/breeds/sort_a_z_hover.svg);
     background-size: 19px 22px; 
     border-radius: 10px;
     border: 2px solid #FBE0DC;
 }
-
-.filter__button--sort-desc:hover{
+.filter__buttons button:nth-child(2):hover{
     background-image: url(/img/svg/breeds/sort_z_a_hover.svg);
     border-radius: 10px;
     border: 2px solid #FBE0DC;
 }
+
 .gallery{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-height: 770px;
+    height: 770px;
     overflow-y: scroll;
     width: 100%;
 }
@@ -800,6 +805,24 @@ body{
     padding-left: 10px;
 }
 
+/* .content__header .filter__select{
+    color: #8C8C8C;
+    display: block;
+    border-radius: 10px;
+    background: #F8F8F7;
+    height: 40px;
+    padding: 8px 10px;
+} */
+
+.filter__select .filter_section-option{
+    color: inherit;
+    display: block;
+    border-radius: 10px;
+    background: #F8F8F7;
+    height: 40px;
+    padding: 8px 10px;
+}
+
 .filter_section-option{
     color: #1D1D1D;
     font-size: 16px;
@@ -808,17 +831,33 @@ body{
     background: #FFF;
     height: 40px;
     padding: 8px 0 8px 10px;
+    width: 100%;
+}
+
+.breed-select{
+    color: #8C8C8C;
+    display: block;
+    border-radius: 10px;
+    background: #F8F8F7;
+    height: 40px;
+    padding: 8px 10px;
 }
 
 .breed-select::placeholder{
-    color: #1D1D1D;
+    color: #8C8C8C;
     font-size: 16px;
     line-height: 150%;
 }
-.filter_section-option:hover{
+/* .content__header .filter__select:hover{
     border-radius: 10px;
     border: 2px solid #FBE0DC;
-    background: #FFF;
+    background: #F8F8F7;
+    padding: 6px 0 6px 8px;
+} */
+.filter__select .filter_section-option:hover{
+    border-radius: 10px;
+    border: 2px solid #FBE0DC;
+    background: #F8F8F7;
     padding: 6px 0 6px 8px;
 }
 
