@@ -26,7 +26,7 @@ export default function Home() {
                         {SubHeader({tabname})}
                         </div>
                         <p className="content__description">Search results for: <span className="name__breed">Cymric</span></p>
-                        {Gallery(galleryItems)}
+                        {/* {Gallery()} */}
                     </div>
                 </div>
                 {ModalHome()} 

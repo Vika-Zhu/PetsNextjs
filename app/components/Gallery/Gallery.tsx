@@ -1,15 +1,16 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { selectalphaSort, selectBreedFilter, selectImageCount, selectTypeImage } from '@/app/GlobalRedux/filterGallerySlice';
 import { textAdd, reset, imageCount, alphaSortFilter} from '@/app/GlobalRedux/filterGallerySlice';
+import { getBreeds, getImages } from '../../servises/cats-api-client'
 
 
 function galleryItem(item:any){
     return(  
          <div key = {item.id + 'galleryItem'} className = "gallery__item" > 
-            <img src={item.src} alt=""/>
+            <img src={item.url} alt=""/>
             <button className="gallery_btn-like svg"></button>
             <div className="item-btn btn">
                 <a href="">{item.breed}</a>
@@ -17,18 +18,27 @@ function galleryItem(item:any){
         </div>)
 }
 
-export function Gallery( galleryItems :any){
+export function Gallery(){
     const breedFilter = useSelector(selectBreedFilter);
     const imageCount= useSelector(selectImageCount)
     const alphaSort = useSelector(selectalphaSort)
     const typeImage = useSelector(selectTypeImage)
 
+
+    const [galleryItems, setGalleryItems] = useState([]);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(reset());
-      }, []);
+    }, []);
 
+    useEffect(() => {
+        getImages().then((res:any) => {
+            setGalleryItems(res);
+            console.log(res)
+        })
+    }, []);
+      
     const filtereBreeds:any = (breedFilter: any, items: any) => {    
         return items.filter((item: any) => item.idBreeds === breedFilter)
     }

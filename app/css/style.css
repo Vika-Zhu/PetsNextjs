@@ -502,6 +502,7 @@ body{
     border-radius: 30px;
     background: #ffffff;
     width: 300px;
+    max-height: 300px;
     padding-bottom: 10px;
     overflow: scroll;
     position: absolute;
@@ -512,6 +513,10 @@ body{
     transform: translateY(-10px); 
     transition: opacity 0.3s, transform 0.3s;
     pointer-events: none;
+}
+
+.filter__list-dropdown::-webkit-scrollbar{
+    display: none;
 }
 
 .filter-panel .filter__list-dropdown{
@@ -638,7 +643,6 @@ body{
 .gallery__item{
     position: relative;
     overflow: hidden;
-
 }
 
 .gallery__item:nth-child(10n+1){
@@ -658,7 +662,6 @@ body{
     grid-column: span 2;
     grid-row: span 2;
 }
-
 
 .gallery__item::before {
     content: "";
@@ -695,9 +698,6 @@ body{
     font-weight: 400;
     line-height: 150%;
     letter-spacing: normal;
-    /* opacity: 0;
-    transition: opacity 0.3s ease; 
-*/
 }
 
 .gallery__item:nth-child(10n+1) .item-btn,
@@ -711,15 +711,6 @@ body{
     top: 255px;
     left: 120px;
 }
-/* .item-btn-long{
-    top: 255px;
-    left: 11px;
-} */
-
-/* .item-btn-big{
-    top: 255px;
-    left: 120px;
-} */
 
 .item-btn-long a,
 .item-btn a,
@@ -729,8 +720,8 @@ body{
 
 .item-btn {
     position: absolute;
-    opacity: 0; /* Початкова прозорість кнопки */
-    transition: opacity 0.3s ease; /* Анімація зміни прозорості кнопки */
+    opacity: 0; 
+    transition: opacity 0.3s ease;
 }
   
 .gallery__item:hover .item-btn {
@@ -764,8 +755,6 @@ body{
     background-position: 23% 50%;
     color: #FFF;
 }
-
-
 
 .filter-panel {
     border-radius: 20px;
@@ -848,12 +837,7 @@ body{
     font-size: 16px;
     line-height: 150%;
 }
-/* .content__header .filter__select:hover{
-    border-radius: 10px;
-    border: 2px solid #FBE0DC;
-    background: #F8F8F7;
-    padding: 6px 0 6px 8px;
-} */
+
 .filter__select .filter_section-option:hover{
     border-radius: 10px;
     border: 2px solid #FBE0DC;
@@ -872,9 +856,6 @@ body{
     padding-bottom: 20px;
     gap: 20px;
 }
-.breed-select {
-}
-
 
 .filter-btn {
     background: #FFF;   
@@ -893,7 +874,6 @@ body{
     background-image: url(/img/svg/gallery/upload_btn-hover.svg);
     background-position: 50% 50%;
     background-repeat: no-repeat;
-
 }
 
 .filter-section-breed{
@@ -1065,6 +1045,9 @@ body{
     gap: 5px;
     margin-bottom: 9px;
 }
+
+
+
 
 /* --------------UPLOAD------------- */
 
@@ -1261,6 +1244,92 @@ body{
     float: right;
 }
 
+/* --------------------loading--------------------------- */
+
+.lds-roller {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-roller div {
+    animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    transform-origin: 40px 40px;
+  }
+  .lds-roller div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #cef;
+    margin: -4px 0 0 -4px;
+  }
+  .lds-roller div:nth-child(1) {
+    animation-delay: -0.036s;
+  }
+  .lds-roller div:nth-child(1):after {
+    top: 63px;
+    left: 63px;
+  }
+  .lds-roller div:nth-child(2) {
+    animation-delay: -0.072s;
+  }
+  .lds-roller div:nth-child(2):after {
+    top: 68px;
+    left: 56px;
+  }
+  .lds-roller div:nth-child(3) {
+    animation-delay: -0.108s;
+  }
+  .lds-roller div:nth-child(3):after {
+    top: 71px;
+    left: 48px;
+  }
+  .lds-roller div:nth-child(4) {
+    animation-delay: -0.144s;
+  }
+  .lds-roller div:nth-child(4):after {
+    top: 72px;
+    left: 40px;
+  }
+  .lds-roller div:nth-child(5) {
+    animation-delay: -0.18s;
+  }
+  .lds-roller div:nth-child(5):after {
+    top: 71px;
+    left: 32px;
+  }
+  .lds-roller div:nth-child(6) {
+    animation-delay: -0.216s;
+  }
+  .lds-roller div:nth-child(6):after {
+    top: 68px;
+    left: 24px;
+  }
+  .lds-roller div:nth-child(7) {
+    animation-delay: -0.252s;
+  }
+  .lds-roller div:nth-child(7):after {
+    top: 63px;
+    left: 17px;
+  }
+  .lds-roller div:nth-child(8) {
+    animation-delay: -0.288s;
+  }
+  .lds-roller div:nth-child(8):after {
+    top: 56px;
+    left: 12px;
+  }
+  @keyframes lds-roller {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
 
 /* ----------------------Media--------------------- */

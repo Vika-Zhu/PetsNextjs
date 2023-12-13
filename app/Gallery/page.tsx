@@ -10,6 +10,8 @@ import { FilterImageItems } from '../components/FilterImageItems/FilterImageItem
 import{ModalHome} from '../components/ModalHome/ModalHome';
 import { AlphaSortSelector } from '../components/AlphaSortSelector/AlphaSortSelector';
 import { FilterTypeImage } from '../components/FilterTypeImage/FilterTypeImage';
+import { useState, useEffect} from 'react';
+import { getBreeds } from '../servises/cats-api-client';
 
 
 const galleryItems = [{id: 1, idBreeds: 1, breed: 'Abyssinian', src:"img/Cat_gallery/1_cat_big.jpeg", type: 'jpg'},
@@ -34,24 +36,19 @@ const galleryItems = [{id: 1, idBreeds: 1, breed: 'Abyssinian', src:"img/Cat_gal
     {id: 20, idBreeds: 8,  breed: 'British Curl', src:"img/Cat_gallery/10_cat.jpeg", type: 'jpg'}   
 ]
 
-const breeds = [
-    {breed: 'Abyssinian', id: 1},
-    {breed: 'Aegean', id: 2},
-    {breed: 'American Bobtail', id: 3},
-    {breed: 'American Curl', id: 4},
-    {breed: 'American Shorthair', id: 5},
-    {breed: 'American Wirehair', id: 6},
-    {breed: 'Bengal', id: 7},
-    {breed: 'British Curl', id: 8},
-    {breed: 'Basenji', id: 9},
-]
-
 const limitOptions = [5, 10, 15, 20];
 const limitText = '$ items per page';
 
 const defaultSelectedBreed = 'None';
 
 export default function Home() {
+    const [breeds, setBreeds] = useState([]);
+    useEffect(() => {
+        getBreeds().then((res:any) => {
+            setBreeds(res);
+        })
+    }, []);
+
     const tabname = "GALLERY";
   return (
     <main className="main">
@@ -79,7 +76,7 @@ export default function Home() {
                         <div className="filter-panel_bottom">
                             <div className="filter-section filter-section-breed">
                                 <label className="filter-label" htmlFor="">BREED</label>
-                                {FilterBreed({breed:breeds, defaultSelectedBreed:defaultSelectedBreed})}
+                                {FilterBreed(breeds, defaultSelectedBreed)}
                             </div>
                             <div className="filter-section">
                                 <label className="filter-label" htmlFor="">LIMIT</label>
@@ -88,7 +85,7 @@ export default function Home() {
                             <button className="filter-btn filter-section"></button>
                         </div>
                     </div>
-                    {Gallery(galleryItems)}
+                    {/* {Gallery()} */}
                 </div>
             </div>
             {ModalUpload()}

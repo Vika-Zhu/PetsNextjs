@@ -24,7 +24,7 @@ export default function Home() {
                         <div className="content__header">
                         {SubHeader({tabname})}
                         </div>
-                        {Gallery(galleryItems)}
+                        {/* {Gallery()} */}
                         <div className="info__no-found">
                         No item found 
                         </div>

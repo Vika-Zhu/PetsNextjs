@@ -1,6 +1,5 @@
 'use client';
 
-
 import{MainLeft} from '../components/MainLeft/MainLeft';
 import{RightHeader} from '../components/RightHeader/RightHeader';
 import{SubHeader} from '../components/SubHeader';
@@ -8,7 +7,7 @@ import{ModalHome} from '../components/ModalHome/ModalHome';
 
 
 export default function Home() {
-    const tabname = "VOTING";
+  const tabname = "VOTING";
   return (
     <main className="main">
     <div className="container right-blok">

@@ -25,7 +25,7 @@ export default function Home() {
                         <div className="content__header">
                         {SubHeader({tabname})}
                         </div>
-                        {Gallery(galleryItems)}
+                        {/* {Gallery()} */}
                         <div className='info__voting-favourites'>
                             <div className="logs__item">
                                 <div className="logs__time">22:27</div>
