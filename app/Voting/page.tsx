@@ -4,9 +4,48 @@ import{MainLeft} from '../components/MainLeft/MainLeft';
 import{RightHeader} from '../components/RightHeader/RightHeader';
 import{SubHeader} from '../components/SubHeader';
 import{ModalHome} from '../components/ModalHome/ModalHome';
+import { useEffect, useState } from 'react';
+import { gatImageCat  } from '../servises/cats-api-client';
+import { VoteButtons } from '../components/VoteButtons/VoteButtons';
+import { submitVote, getVoted, saveFavorites } from '@/app/servises/cats-api-client';
+import { LogsList } from '../components/LogsList/LogsList';
 
 
 export default function Home() {
+    const [imageCat, setImageCat] = useState<any>({});
+    const [votedResults, setVotedResults] = useState([]);
+
+
+    useEffect(() => {
+        gatImageCat().then((res) => {
+          setImageCat(res[0]);
+      });
+    }, []);
+
+    useEffect(() => {
+        getVoted().then((res) => {
+            setVotedResults(res);
+        });
+    }, []);
+
+    const handleVote = (voteValue: number) => {
+        submitVote(imageCat.id, voteValue).then(() => {
+            getVoted().then((res) => {
+                setVotedResults(res);
+                gatImageCat().then((newImage) => {
+                    setImageCat(newImage[0]);
+                });
+            });
+        })
+    };
+
+    const handleSaveFavorites = () => {
+        saveFavorites(imageCat.id)
+    };
+
+
+    console.log(votedResults)
+
   const tabname = "VOTING";
   return (
     <main className="main">
@@ -20,48 +59,10 @@ export default function Home() {
                     {SubHeader({tabname})}
                     </div>
                     <div className="voting__foto">
-                        <img src="img/voting_cat.png" alt=""/>
+                        <img src={imageCat.url} alt=""/>
                     </div>
-                    <div className="voting__action">
-                        <button className="btn-likes svg"></button>
-                        <button className="btn-favourites svg"></button>
-                        <button className="btn-dislikes svg"></button>
-                    </div>
-                    <div className="voting__logs">
-
-                        <div className="logs__item">
-                            <div className="logs__time">22:35</div>
-                            <div className="logs__message">Image ID: <span className="user-id">fQSunHvl8</span> was added to Favourites</div>
-                            <div className="logs__icon">
-                                <img src="" alt=""/>
-                            </div>
-                        </div>
-    
-                        <div className="logs__item">
-                            <div className="logs__time">22:27</div>
-                            <div className="logs__message">Image ID: <span className="user-id">HJd0XecNX</span> was added to Likes</div>
-                            <div className="logs__icon">
-                                <img src="" alt=""/>
-                            </div>
-                        </div>
-                        
-                        <div className="logs__item">
-                            <div className="logs__time">22:21</div>
-                            <div className="logs__message">Image ID: <span className="user-id">BbMFS3bU-</span> was added to Dislikes</div>
-                            <div className="logs__icon">
-                                <img src="" alt=""/>
-                            </div>
-                        </div>
-                     
-                        <div className="logs__item">
-                            <div className="logs__time">21:56</div>
-                            <div className="logs__message">Image ID: <span className="user-id">fQSunHvl8</span> was removed from Favourites</div>
-                            <div className="logs__icon">
-                                <img src="img/svg/like-color-30.svg" alt=""/>
-                            </div>
-                        </div>
-    
-                    </div>
+                    {VoteButtons(handleVote, handleSaveFavorites)}
+                    {LogsList(votedResults)}
                 </div>
             </div>
             {ModalHome()}

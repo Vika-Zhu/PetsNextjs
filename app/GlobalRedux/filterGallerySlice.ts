@@ -6,27 +6,28 @@ import { RootState } from './store';
 interface HeaderSearchState {
     breed: string;
     imageCount: number;
-    alphaSort: string;
+    uploadDataSort: string;
 }
 
 export const filterGallerySlice= createSlice({
     name: 'headerSearch',
     initialState: {
         idBreed: '',
-        imageCount: 20,
-        alphaSort: '',
-        typeImage: 'All',
+        nameBreed: '',
+        imageCount: 5,
+        uploadDateOrder: 'ASC',
+        typeImage: 'jpg,png,gif',
     },
 
     reducers:{
         textAdd: (state, action: PayloadAction<string>) =>{
-            state.idBreed = action.payload;
-            console.log('New State:', state);
+            state.nameBreed = action.payload;
+            // console.log(action.payload);
         },
         reset: (state) => {
             state.idBreed = '';
             state.imageCount = 20;
-            state.alphaSort = ''
+            state.uploadDateOrder = '';
         },
         setBreedFilter:(state, action: PayloadAction<string>) =>{
             state.idBreed = action.payload;
@@ -34,21 +35,20 @@ export const filterGallerySlice= createSlice({
         imageCount:(state, action: PayloadAction<number>) =>{
             state.imageCount = action.payload;
         },
-        alphaSortFilter:(state, action: PayloadAction<string>) =>{
-            state.alphaSort = action.payload;
-            console.log(action.payload)
+        uploadDateSort:(state, action: PayloadAction<string>) =>{
+            state.uploadDateOrder = action.payload;
         },
-        filterType:(state, action: PayloadAction<string>) =>{
+        typeImageFilter:(state, action: PayloadAction<string>) =>{
             state.typeImage = action.payload;
-            console.log(action.payload)
         }
     }
 })
 
 export const selectBreedFilter = (state: RootState) => state.breed.idBreed;
 export const selectImageCount = (state: RootState) => state.breed.imageCount;
-export const selectalphaSort = (state: RootState) => state.breed.alphaSort;
+export const selectUploadDataOrder = (state: RootState) => state.breed.uploadDateOrder;
 export const selectTypeImage = (state: RootState) => state.breed.typeImage;
+export const selectBreedFilterByName = (state: RootState) => state.breed.nameBreed;
 
-export const { textAdd, reset,setBreedFilter, imageCount, alphaSortFilter, filterType } = filterGallerySlice.actions
+export const { textAdd, reset, setBreedFilter, imageCount, uploadDateSort, typeImageFilter } = filterGallerySlice.actions
 export default filterGallerySlice.reducer;
