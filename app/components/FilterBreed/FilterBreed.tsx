@@ -24,8 +24,8 @@ export function FilterBreed(breeds:any, defaultSelectedBreed:any){
             {breedFilter ? <div className="filter_section-option"> {breeds.find((item:any) => item.id === breedFilter)?.name}</div> : <div className="filter_section-option">{defaultSelectedBreed}</div>}
             <div className="filter__list-wrapper">
                 <ul className="filter__list-dropdown">
-                <li onClick={handleDefaultSelectedBreed}>{defaultSelectedBreed}</li>
-                {breeds.map((item: any) => (
+                    <li onClick={handleDefaultSelectedBreed}>{defaultSelectedBreed}</li>
+                    {breeds.map((item: any) => (
                     <li 
                     key={item.name}
                     className="filter__item"

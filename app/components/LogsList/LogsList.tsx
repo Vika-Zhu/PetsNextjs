@@ -1,12 +1,8 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import {useSelector, useDispatch} from 'react-redux'
-
+import React from 'react';
 
 export function LogsList(votedResults:any){
-
-
     return (
         <div className="logs">
             {votedResults.slice().reverse().map((item: any) => {

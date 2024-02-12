@@ -11,9 +11,7 @@ import { UploadDataSortButtons } from '../components/UploadDataSortButtons/Uploa
 import { useState, useEffect} from 'react';
 import { getBreeds}  from '../servises/cats-api-client';
 import {useSelector} from 'react-redux'
-
-
-import { selectUploadDataOrder, selectBreedFilter, selectImageCount, selectBreedFilterByName } from '@/app/GlobalRedux/filterGallerySlice';
+import { selectUploadDataOrder, selectBreedFilter, selectImageCount } from '@/app/GlobalRedux/filterGallerySlice';
 
 const defaultSelectedBreed = 'All breeds';
 const limitOptions = [5, 10, 15, 20];
@@ -23,7 +21,6 @@ const limitText = 'Limit: $';
 export default function Home() {
     const tabname = "BREEDS";
     const [breeds, setBreeds] = useState([]);
-
     const breedFilter = useSelector(selectBreedFilter);
     const imageCount= useSelector(selectImageCount)
     const uploadDataSort = useSelector(selectUploadDataOrder)
@@ -41,10 +38,6 @@ export default function Home() {
         });
     }, [breedFilter, imageCount, uploadDataSort]);
 
-
-    // const filtereBreedsByName:any = (nameBreed: any, items: any) => {    
-    //     return items.filter((item: any) => item.name.toLowerCase().includes(nameBreed.toLowerCase()))
-    // }
 
     const filterBreedsById:any = (breedFilter: any, items: any) => {
         return  items.filter((item:any ) => item.id === breedFilter);

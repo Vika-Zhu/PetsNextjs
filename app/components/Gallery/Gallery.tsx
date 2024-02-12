@@ -8,10 +8,8 @@ import { getBreeds, getImages } from '../../servises/cats-api-client'
 import { saveFavorites, checkIfInFavoritesApi, deleteFavorite, getFavorites } from '../../servises/cats-api-client';
 
 
-
 function galleryItem(item:any, handleFavoriteToggle:any){
    
-
     return(  
          <div key = {item.id + 'galleryItem'} className = "gallery__item" > 
             <img src={item.url} alt=""/>

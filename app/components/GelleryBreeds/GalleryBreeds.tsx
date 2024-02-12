@@ -24,9 +24,9 @@ function galleryItem(item:any){
 export function GalleryBreeds(galleryItems:any){
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     dispatch(reset());
-    // }, []);
+    useEffect(() => {
+        dispatch(reset());
+    }, []);
 
     return(
          galleryItems.length ? 
@@ -39,7 +39,6 @@ export function GalleryBreeds(galleryItems:any){
             <div className="lds-roller">
                  <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
             </div>
-       
- );
+    );
 };
     

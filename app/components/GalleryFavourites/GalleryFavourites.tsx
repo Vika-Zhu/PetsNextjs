@@ -9,11 +9,6 @@ import { saveFavorites, deleteFavorite } from '@/app/servises/cats-api-client';
 
 function galleryItem(item:any, onDeleteFavorite: any){
    
-    // const handleDelete = () => {
-    //     onDelete(item.image_id);
-    // };
-   
-
     return(  
          <div key = {item.id + 'galleryItem'} className = "gallery__item" > 
             <img src={item.image.url} alt=""/>
@@ -23,10 +18,6 @@ function galleryItem(item:any, onDeleteFavorite: any){
 
 
 export function GalleryFavorites(galleryItems:any, onDeleteFavorite:any){
-
-    // const handleDeleteFromGallery = (favoriteId:any) => {
-    //     onDeleteFavorite(favoriteId);  
-    // };
 
     return(
          galleryItems.length ? 

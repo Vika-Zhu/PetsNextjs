@@ -9,14 +9,14 @@ export function RightHeader(){
     const dispatch = useDispatch();
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const handleInputChange = (event:any) => {
+    const handleInputChange = () => {
         const newText = inputRef.current?.value || '';
         dispatch(textAdd(newText));
     };
 
     return ( 
             <div className="right-header header">
-                <div className="header__burger">
+                <div className="header__burger" >
                     <span></span>
                 </div>
                 <div className="header_search">
@@ -39,4 +39,5 @@ export function RightHeader(){
                     </Link>
                 </div>
             </div>
-)}
+    )
+}

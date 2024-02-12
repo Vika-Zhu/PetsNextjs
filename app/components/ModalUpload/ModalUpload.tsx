@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 
 export function ModalUpload(handleFileChange:any, selectedFile:any, hendlerDrop:any, hendlerDrag:any, hendlerLeave:any, dragActive:any, previewImage:any, hendlerSubmit:any, handleModalToggle:any, uploadStatus:any) {
 
@@ -54,7 +53,8 @@ export function ModalUpload(handleFileChange:any, selectedFile:any, hendlerDrop:
                     )}
                 </div>
             </div>
-        </div>)
+        </div>
+    )
 }
 
 

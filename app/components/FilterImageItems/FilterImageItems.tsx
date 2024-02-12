@@ -26,7 +26,7 @@ export function FilterImageItems({ options, text }:any){
                     {options.map((option: any) => (
                         <li key={option} className="filter__item" onClick= {()=>{clickHandler(option)}}>
                         {optionText(option, text)}
-                    </li>
+                        </li>
                     ))}
                 </ul>
             </div>
