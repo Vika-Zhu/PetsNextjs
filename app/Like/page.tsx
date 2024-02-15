@@ -2,18 +2,19 @@
 
 import{MainLeft} from '../components/MainLeft/MainLeft';
 import{RightHeader} from '../components/RightHeader/RightHeader';
-import{SubHeader} from '../components/SubHeader';
+import{SubHeader} from '../components/SubHeader/SubHeader';
 import{ModalHome} from '../components/ModalHome/ModalHome';
-import{Gallery} from '../components/Gallery/Gallery';
 import { getVoted } from '../servises/cats-api-client';
 import { useEffect, useState } from 'react';
-import { GalleryForLikesandDislikes } from '../components/GalleryForLikeAndDislike/GalleryForLikesAndDislikes';
-
+import { selectIsModalHomeOpen } from '@/app/GlobalRedux/filterGallerySlice';
+import { useSelector } from 'react-redux';
+import { MultiGallery } from '../components/MultiGallery/MultiGallery';
 
 
 export default function Home() {
     const tabname = "LIKES";
     const [votedResults, setVotedResults] = useState([]);
+    const isModalHomeOpen = useSelector(selectIsModalHomeOpen);
 
     useEffect(() => {
         getVoted().then((res) => {
@@ -22,7 +23,6 @@ export default function Home() {
     }, []);
 
     const likedImages = votedResults.filter((item:any) => item.value === 1);
-
 
     return (
         <main className="main">
@@ -35,14 +35,12 @@ export default function Home() {
                             <div className="content__header">
                             {SubHeader({tabname})}
                             </div>
-                            {GalleryForLikesandDislikes(likedImages)}
+                            {MultiGallery({galleryItems: likedImages, showDeleteButton: false, showLoader: false, classMode: 'gallery-like-dislike'})}
                         </div>
                     </div>
-                    {ModalHome()} 
+                    {isModalHomeOpen && ModalHome()} 
                 </div>
-
             </div>
         </main>
-
-  )
+    )
 }

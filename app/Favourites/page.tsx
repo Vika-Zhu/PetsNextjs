@@ -2,22 +2,31 @@
 
 import{MainLeft} from '../components/MainLeft/MainLeft';
 import{RightHeader} from '../components/RightHeader/RightHeader';
-import{SubHeader} from '../components/SubHeader';
+import{SubHeader} from '../components/SubHeader/SubHeader';
 import{ModalHome} from '../components/ModalHome/ModalHome';
 import { getFavorites } from '../servises/cats-api-client';
 import { useState, useEffect} from 'react';
-import { GalleryFavorites } from '../components/GalleryFavourites/GalleryFavourites';
 import { deleteFavorite} from '../servises/cats-api-client';
-
-
+import { useSelector } from 'react-redux';
+import { getVoted } from '../servises/cats-api-client';
+import { selectIsModalHomeOpen } from '../GlobalRedux/filterGallerySlice';
+import { MultiGallery } from '../components/MultiGallery/MultiGallery';
+import { LogsList } from '../components/LogsList/LogsList';
 
 export default function Home() {
     const tabname = "FAVOURITES";
     const [galleryItemsFavorites, setGalleryItems] = useState([]);
+    const [favoriteLogs, setFavoriteLogs] = useState([]);
+    const isModalHomeOpen = useSelector(selectIsModalHomeOpen);
 
     useEffect(() => {
         getFavorites().then((res) => {
             setGalleryItems(res);
+        });
+        
+        getVoted().then((res) => {
+            const favoriteLogs = res.filter((item:any) => item.value === 3);
+            setFavoriteLogs(favoriteLogs);
         });
     }, []);
 
@@ -28,7 +37,6 @@ export default function Home() {
             });
         })
     };
-    
 
     return (
         <main className="main">
@@ -37,29 +45,17 @@ export default function Home() {
                     {MainLeft()}
                     <div className="main-right">
                         {RightHeader()}
-                        <div className="right__content breeds">
+                        <div className="right__content">
                             <div className="content__header">
                             {SubHeader({tabname})}
                             </div>
-                            {GalleryFavorites(galleryItemsFavorites, handleDeleteFromFavorite)}
-                            
-                            <div className='logs'>
-                                <div className="logs__item">
-                                    <div className="logs__time">22:27</div>
-                                    <div className="logs__message">Image ID: <span className="user-id">HJd0XecNX</span> was added to Likes</div>
-                                </div>
-                                <div className="logs__item">
-                                    <div className="logs__time">22:27</div>
-                                    <div className="logs__message">Image ID: <span className="user-id">HJd0XecNX</span> was added to Likes</div>
-                                </div>
-                            </div>
-                        
-
+                            {MultiGallery({galleryItems: galleryItemsFavorites, onDeleteFavorite:handleDeleteFromFavorite, showDeleteButton: true, showLoader: true, classMode: "gallery-favorite"})}
+                            {LogsList(favoriteLogs)}
                         </div>
                     </div>
-                    {ModalHome()} 
+                    {isModalHomeOpen && ModalHome()} 
                 </div>
             </div>
         </main>
-  )
+    )
 }

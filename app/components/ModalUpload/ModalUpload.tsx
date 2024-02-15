@@ -1,5 +1,6 @@
 
-export function ModalUpload(handleFileChange:any, selectedFile:any, hendlerDrop:any, hendlerDrag:any, hendlerLeave:any, dragActive:any, previewImage:any, hendlerSubmit:any, handleModalToggle:any, uploadStatus:any) {
+export function ModalUpload(props:any) {
+    const {handleFileChange, selectedFile, hendlerDrop, hendlerDrag, hendlerLeave, dragActive, previewImage, hendlerSubmit, handleModalToggle, uploadStatus} = props
 
     return(   
         <div className="modal">

@@ -93,9 +93,7 @@ body{
     color:#8C8C8C;
     margin-top: 10px;
 }
-.block__start {
-    padding-top: 59px;
-}
+
 .start {
 }
 .start__text {
@@ -648,13 +646,20 @@ body{
     /* width: 680px; */
 }
 
-.favorites__gallery{
-    height: auto;
+.gallery-favorite {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-height: 380px;
 }
 
 .like-dislike__gallery{
     height: 640px;
     margin-top: 20px;
+}
+
+.gallery-like-dislike{
+    margin-top: 20px;
+    height: 640px;
 }
 
 .breeds__gallery{
@@ -834,14 +839,6 @@ body{
     padding-left: 10px;
 }
 
-/* .content__header .filter__select{
-    color: #8C8C8C;
-    display: block;
-    border-radius: 10px;
-    background: #F8F8F7;
-    height: 40px;
-    padding: 8px 10px;
-} */
 
 .filter__select .filter_section-option{
     color: inherit;
@@ -994,6 +991,7 @@ body{
     /* height: 770px; */
     /* width: 100%; */
 }
+
 
 .breed-foto__slider {
     position: relative;
@@ -1293,7 +1291,7 @@ body{
 
 
 .modal-home{
-    display: none;
+    /* display: none; */
     position: absolute;
     z-index: 10;
     left: 0;
@@ -1305,14 +1303,14 @@ body{
 }
 
 .modal-home__container{
-    max-width: 486px;
+    max-width: 768px;
     margin: 0 auto;
     padding: 30px 20px 0 20px;
 }
 
 .modal-home__content{
-    /* min-width: 446px; */
-    /* margin: 0 auto; */
+    width: 446px;
+    margin: 0 auto;
 }
 
 .modal-home__close{
@@ -1330,7 +1328,6 @@ body{
     background-image: url(/img/svg/close-white-20.svg);
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    float: right;
 }
 
 /* --------------------loading--------------------------- */
@@ -1423,6 +1420,8 @@ body{
   }
 
 .roller-favorites{
+    margin-top: 50px;
+    margin-bottom: 50px;
     top: 0
   }
 
@@ -1544,6 +1543,10 @@ body{
     .modal-home__container{
         padding: 0 20px;
         max-width: 375px;
+    }
+
+    .modal-home__content{
+        width: 335px;
     }
 
     .header{
@@ -1687,7 +1690,7 @@ body{
     .modal__container{
         max-width: 375px;
     }
-  
+
     .modal__title{
         font-size: 20px;
     }

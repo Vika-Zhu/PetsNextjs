@@ -2,7 +2,7 @@
 
 import { MainLeft } from '../components/MainLeft/MainLeft';
 import { RightHeader } from '../components/RightHeader/RightHeader';
-import { SubHeader } from '../components/SubHeader/';
+import { SubHeader } from '../components/SubHeader/SubHeader';
 import { Gallery } from '../components/Gallery/Gallery';
 import { ModalUpload } from '../components/ModalUpload/ModalUpload';
 import { FilterBreed } from '../components/FilterBreed/FilterBreed';
@@ -14,9 +14,7 @@ import { FilterTypeImage } from '../components/FilterTypeImage/FilterTypeImage';
 import { useState, useEffect} from 'react';
 import { getBreeds, getImages, getFavorites, deleteFavorite, saveFavorites, uploadImage } from '../servises/cats-api-client';
 import { useSelector, useDispatch} from 'react-redux'
-import { reset } from '@/app/GlobalRedux/filterGallerySlice';
-import { selectUploadDataOrder, selectBreedFilter, selectImageCount, selectTypeImage, selectBreedFilterByName  } from '@/app/GlobalRedux/filterGallerySlice';
-import { Console } from 'console';
+import { selectUploadDataOrder, selectBreedFilter, selectImageCount, selectTypeImage, selectBreedFilterByName, selectIsModalHomeOpen } from '@/app/GlobalRedux/filterGallerySlice';
 import Link from 'next/link'
 
 
@@ -33,18 +31,78 @@ export default function Home() {
     const [favoriteItems, setFavoriteItems] = useState<any>([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedFile, setSelectedFile] = useState<any>(false);
-    const [dragActive, setDraagActive] = useState(false)
+    const [dragActive, setDraagActive] = useState(false);
     const [previewImage, setPreviewImage] = useState<any>(null);
     const [uploadStatus, setUploadStatus] = useState<any>(null);
-
+    const isModalHomeOpen = useSelector(selectIsModalHomeOpen);
     const breedFilter = useSelector(selectBreedFilter);
-    const imageCount= useSelector(selectImageCount)
-    const uploadDataSort = useSelector(selectUploadDataOrder)
-    const typeImage = useSelector(selectTypeImage)
-    const nameBreed = useSelector(selectBreedFilterByName)
+    const imageCount= useSelector(selectImageCount);
+    const uploadDataSort = useSelector(selectUploadDataOrder);
+    const typeImage = useSelector(selectTypeImage);
+    const nameBreed = useSelector(selectBreedFilterByName);
+
+
+    const fetchDataFromApi = async () =>{
+        const [resImages, resFavorites] = await Promise.all([
+            
+            getImages({breedFilter, imageCount, uploadDataSort, typeImage}),
+            getFavorites()
+        ]);
+
+
+        const updatedGalleryItems = resImages.map((item:any) => {
+            const favorite = resFavorites.find((favorite:any) => favorite.image_id === item.id);
+            return {
+                ...item,
+                isFavorite: !!favorite,
+            };
+        });
+
+        setGalleryItems(updatedGalleryItems);
+        setFavoriteItems(resFavorites);
+    };   
+
+    useEffect(() => {
+        getBreeds(imageCount, uploadDataSort).then((res) => {
+            setBreeds(res);
+        });
+
+        fetchDataFromApi();
+    },[]);
+
+    useEffect(() => {
+        fetchDataFromApi();
+    }, [breedFilter, imageCount, uploadDataSort, typeImage, nameBreed]);
+
+
+    const handleFavoriteToggle = (id: string, isFavorite: boolean) => {
+        const favoriteObj = favoriteItems.find((favorite: any) => favorite.image_id === id);
+        if (isFavorite) {
+            deleteFavorite(favoriteObj.id).then(() => {
+                fetchDataFromApi()
+                const updatedGalleryItems = galleryItems.map((item:any) => item.id === id ? { ...item, isFavorite: false } : item)
+                setGalleryItems(updatedGalleryItems)
+            })
+        } else {
+            saveFavorites(id).then(() => {
+                fetchDataFromApi()
+                const updatedGalleryItems = galleryItems.map((item:any) => item.id === id ? { ...item, isFavorite: true } : item)
+                setGalleryItems(updatedGalleryItems)
+            })
+        }
+    };
+
+    const onRefreshButtonClicked = () =>{
+        getImages({breedFilter, imageCount, uploadDataSort, typeImage}).then((res) => {
+        setGalleryItems(res);
+        })
+    }
+
+    const handleModalToggle = () => {
+        setIsModalOpen(!isModalOpen);
+    };
 
 // ------------------UPLOAD--------------------------------
-
     const handleFileChange = (e:any) => {
         e.preventDefault();
         const file = e.target.files[0];
@@ -80,29 +138,16 @@ export default function Home() {
         }
     }
 
-
-    // const handleUploadStatus = (status:any) => {
-    //     setUploadStatus(status);
-    //     console.log(uploadStatus)
-    //     if (status === 'success') {
-    //         setSelectedFile(false);
-    //     }
-    // };
-
     const hendlerSubmit = (e:any) =>{
         e.preventDefault();
-
-        
-        const test = uploadImage(selectedFile[0]);
-        test.then(response => {
-                console.log('Response:', response)
+        uploadImage(selectedFile[0]).then(response => {
                 setUploadStatus('success');
                 setSelectedFile(false);
             })
             .catch((error) => {
                 console.log('error', error);
                 setUploadStatus('error');
-            });
+        });
     }
     
     useEffect(() => {
@@ -110,87 +155,9 @@ export default function Home() {
             setPreviewImage(null);
         }
         if (uploadStatus === 'error') {
-
         }
     }, [selectedFile, uploadStatus]);
-
-
-    
-    // ---------------------------------------------------------------
-
-    const fetchDataFromApi = async () =>{
-        const queryParams = {
-            breedFilter: breedFilter,
-            imageCount: imageCount,
-            uploadDataSort: uploadDataSort,
-            typeImage: typeImage
-        };
-    
-        const [resImages, resFavorites] = await Promise.all([
-            getImages(queryParams),
-            getFavorites()
-        ]);
-        const updatedGalleryItems = resImages.map((item:any) => {
-            const favorite = resFavorites.find((favorite:any) => favorite.image_id === item.id);
-            return {
-                ...item,
-                isFavorite: !!favorite,
-            };
-        });
-        setGalleryItems(updatedGalleryItems);
-        setFavoriteItems(resFavorites);
-    };   
-
-    useEffect(() => {
-        const queryParams = {
-            breedFilter: breedFilter,
-            imageCount: imageCount,
-            uploadDataSort: uploadDataSort,
-        };
-
-        getBreeds(queryParams).then((res) => {
-            setBreeds(res);
-        });
-
-        fetchDataFromApi();
-    },[]);
-
-    useEffect(() => {
-        fetchDataFromApi();
-    }, [breedFilter, imageCount, uploadDataSort, typeImage, nameBreed]);
-
-
-    const handleFavoriteToggle = (id: string, isFavorite: boolean) => {
-            const favoriteObj = favoriteItems.find((favorite: any) => favorite.image_id === id);
-            if (isFavorite) {
-                deleteFavorite(favoriteObj.id).then(() => {
-                    fetchDataFromApi()
-                    const test = galleryItems.map((item:any) => item.id === id ? { ...item, isFavorite: false } : item)
-                    setGalleryItems(test)
-                })
-            } else {
-                saveFavorites(id).then(() => {
-                    fetchDataFromApi()
-                    const test = galleryItems.map((item:any) => item.id === id ? { ...item, isFavorite: true } : item)
-                    setGalleryItems(test)
-                })
-            }
-    };
-
-    const onRefreshButtonClicked = () =>{
-        const queryParams = {
-            breedFilter: breedFilter,
-            imageCount: imageCount,
-            uploadDataSort: uploadDataSort,
-          };
-        getImages(queryParams).then((res) => {
-        setGalleryItems(res);
-      })
-    }
-
-    const handleModalToggle = () => {
-        setIsModalOpen(!isModalOpen);
-    };
+// ---------------------------------------------------------------
 
     return (
         <main className="main">
@@ -230,15 +197,10 @@ export default function Home() {
                             {Gallery(galleryItems, handleFavoriteToggle)}
                         </div>
                     </div>
-                    {isModalOpen && ModalUpload(handleFileChange, selectedFile, hendlerDrop, hendlerDrag, hendlerLeave, dragActive, previewImage, hendlerSubmit, handleModalToggle, uploadStatus)}
-                    {ModalHome()} 
+                    {isModalOpen && ModalUpload({handleFileChange, selectedFile, hendlerDrop, hendlerDrag, hendlerLeave, dragActive, previewImage, hendlerSubmit, handleModalToggle, uploadStatus})}
+                    {isModalHomeOpen && ModalHome()} 
                 </div>
             </div>
         </main>
     )
 }
-
-// const updatedGalleryItems = galleryItems.find((item:any) => item.id === favoriteObj.id)
-//                     return{
-                        
-//                     }

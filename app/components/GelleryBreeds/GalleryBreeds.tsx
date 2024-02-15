@@ -1,12 +1,9 @@
 'use client';
 
-
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react';
-import {useSelector, useDispatch} from 'react-redux'
-import { selectUploadDataOrder, selectBreedFilter, selectImageCount, selectTypeImage } from '@/app/GlobalRedux/filterGallerySlice';
-import { textAdd, reset, imageCount, uploadDateSort} from '@/app/GlobalRedux/filterGallerySlice';
-import { getBreeds, getImages } from '../../servises/cats-api-client'
+import { useDispatch} from 'react-redux'
+import { reset} from '@/app/GlobalRedux/filterGallerySlice';
 
 
 function galleryItem(item:any){

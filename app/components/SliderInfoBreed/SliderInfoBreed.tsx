@@ -2,8 +2,6 @@
 
 import React from 'react';
 import { useState } from 'react';
-import { BsArrowLeftCircleFill,BsArrowRightCircleFill } from "react-icons/bs"
-
 
 export function SliderInfoBreed (breedImages:any){
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -14,7 +12,6 @@ export function SliderInfoBreed (breedImages:any){
 
     const nextSlide = () => {
         setCurrentSlide(currentSlide === breedImages.length - 1 ? 0 : currentSlide + 1)
-        // setCurrentSlide((prev) => (prev === breedImages.length - 1 ? 0 : prev + 1));
     }
 
     return(

@@ -8,7 +8,7 @@ import { selectImageCount } from '@/app/GlobalRedux/filterGallerySlice';
 
 export function FilterImageItems({ options, text }:any){
     const dispatch = useDispatch();
-    const selectedOption = useSelector(selectImageCount)
+    const selectedOption = useSelector(selectImageCount);
 
     let clickHandler = (count:any) =>{
         dispatch(imageCount(count));

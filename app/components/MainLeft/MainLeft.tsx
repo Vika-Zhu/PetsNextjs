@@ -12,7 +12,6 @@ export function MainLeft() {
             </div>
             <div className="greeting">
                 <h2 className="greeting__title">Hi!👋</h2>
-                <p className="greeting__text">Welcome to MacPaw Bootcamp 2023</p>
             </div>
             <div className="block__start start">
                 <div className="start__text">Lets start using The Cat API</div>

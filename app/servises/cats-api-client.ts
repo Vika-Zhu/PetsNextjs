@@ -1,27 +1,17 @@
-var myHeaders = new Headers();
+let myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 myHeaders.append("x-api-key", "live_wiK6XvXiiaaWkigPGBlpfIWQm8GcUQoZ231HgSqBokFzek6teWQFhAKHurcR0agm");
 
-var myHeaders2 = new Headers();
-// myHeaders2.append("Content-Type", "multipart/form-data");
+let myHeaders2 = new Headers();
 myHeaders2.append("x-api-key", "live_wiK6XvXiiaaWkigPGBlpfIWQm8GcUQoZ231HgSqBokFzek6teWQFhAKHurcR0agm");
 
-
-
-var requestOptions:any = {
+let requestOptions:any = {
   method: 'GET',
   headers: myHeaders,
   redirect: 'follow'
 };
 
-// var requestOptions2:any = {
-//   method: 'POST',
-//   headers: myHeaders2,
-//   redirect: 'follow'
-// };
-
-export const getBreeds = (queryParams:any) => {
-  const { breedFilter, imageCount, uploadDataSort } = queryParams;
+export const getBreeds = (imageCount:any, uploadDataSort:any) => {
   const apiUrl = `https://api.thecatapi.com/v1/breeds?limit=${imageCount}&order=${uploadDataSort}`;
 
   return fetch(apiUrl, requestOptions)
@@ -29,8 +19,8 @@ export const getBreeds = (queryParams:any) => {
   .catch(error => console.log('error', error));
 }
 
-export const getImages = (queryParams:any) => {
-  const { breedFilter, imageCount, uploadDataSort, typeImage} = queryParams;
+export const getImages = (props:any) => {
+  const { breedFilter, imageCount, uploadDataSort, typeImage} = props;
   const apiUrl = `https://api.thecatapi.com/v1/images/search?breed_ids=${breedFilter}&limit=${imageCount}&order=${uploadDataSort}&mime_types=${typeImage}`
 
   return fetch(apiUrl, requestOptions)
@@ -46,7 +36,6 @@ export const getBreedsInfo = (breedId:any) => {
   .catch(error => console.log('error', error));
 };
 
-
 export const getInfoBreedGallery = (queryParams:any) => {
   const {breedName} = queryParams;
   const apiUrl = `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedName}`
@@ -55,7 +44,6 @@ export const getInfoBreedGallery = (queryParams:any) => {
   .then(response => response.json())
   .catch(error => console.log('error', error));
 };
-
 
 export const gatImageCat = () => {
   const apiUrl = `https://api.thecatapi.com/v1/images/search`;

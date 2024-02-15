@@ -1,12 +1,6 @@
 'use client';
 
-import React from 'react';
-import { useState, useEffect} from 'react';
-import { saveFavorites } from '@/app/servises/cats-api-client';
-
-
 export function VoteButtons(handleVote:any, handleSaveFavorites:any ){
-
 
     return (
         <div className="voting__action">

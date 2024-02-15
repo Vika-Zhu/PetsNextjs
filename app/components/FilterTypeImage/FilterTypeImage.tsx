@@ -7,7 +7,7 @@ import { selectTypeImage } from '@/app/GlobalRedux/filterGallerySlice';
 
 export function FilterTypeImage(){
     const dispatch = useDispatch();
-    const typeImage = useSelector(selectTypeImage)
+    const typeImage = useSelector(selectTypeImage);
 
     const handleSort = (option: any) => {
         dispatch(typeImageFilter (option))

@@ -17,12 +17,12 @@ export const filterGallerySlice= createSlice({
         imageCount: 5,
         uploadDateOrder: 'ASC',
         typeImage: 'jpg,png,gif',
+        isModalHomeOpen: false,
     },
 
     reducers:{
         textAdd: (state, action: PayloadAction<string>) =>{
             state.nameBreed = action.payload;
-            // console.log(action.payload);
         },
         reset: (state) => {
             state.idBreed = '';
@@ -40,7 +40,13 @@ export const filterGallerySlice= createSlice({
         },
         typeImageFilter:(state, action: PayloadAction<string>) =>{
             state.typeImage = action.payload;
-        }
+        },
+        openHomeModal: state => {
+            state.isModalHomeOpen = true;
+        },
+        closeHomeModal: state => {
+            state.isModalHomeOpen = false;
+        },
     }
 })
 
@@ -49,6 +55,7 @@ export const selectImageCount = (state: RootState) => state.breed.imageCount;
 export const selectUploadDataOrder = (state: RootState) => state.breed.uploadDateOrder;
 export const selectTypeImage = (state: RootState) => state.breed.typeImage;
 export const selectBreedFilterByName = (state: RootState) => state.breed.nameBreed;
+export const selectIsModalHomeOpen = (state: RootState) => state.breed.isModalHomeOpen
 
-export const { textAdd, reset, setBreedFilter, imageCount, uploadDateSort, typeImageFilter } = filterGallerySlice.actions
+export const { textAdd, reset, setBreedFilter, imageCount, uploadDateSort, typeImageFilter, openHomeModal, closeHomeModal  } = filterGallerySlice.actions
 export default filterGallerySlice.reducer;

@@ -2,43 +2,28 @@
 
 import{MainLeft} from '../components/MainLeft/MainLeft';
 import{RightHeader} from '../components/RightHeader/RightHeader';
-import{SubHeader} from '../components/SubHeader';
+import{SubHeader} from '../components/SubHeader/SubHeader';
 import{ModalHome} from '../components/ModalHome/ModalHome';
 import { GalleryBreeds } from '../components/GelleryBreeds/GalleryBreeds';
 import {useSelector} from 'react-redux'
 import { getBreeds } from '../servises/cats-api-client';
 import React, { useState, useEffect } from 'react';
-import { selectUploadDataOrder, selectBreedFilter, selectImageCount, selectBreedFilterByName } from '@/app/GlobalRedux/filterGallerySlice';
+import { selectUploadDataOrder, selectImageCount, selectBreedFilterByName, selectIsModalHomeOpen } from '@/app/GlobalRedux/filterGallerySlice';
 
-// const galleryItems = [{id: 1, breed: 'Abyssinian', src:"img/Cat_gallery/1_cat_big.jpeg"},
-//     {id: 2, breed: 'American Wirehair', src:"img/Cat_gallery/2_cat.jpeg" },
-//     {id: 3, breed: 'American Wirehair', src:"img/Cat_gallery/3_cat_big.jpeg"},
-// ]
 
 export default function Home() {
-    const nameBreed = useSelector(selectBreedFilterByName)
-    const [breeds, setBreeds] = useState([]);
-
     const tabname = "SEARCH";
-
-    const imageCount= useSelector(selectImageCount)
-    const uploadDataSort = useSelector(selectUploadDataOrder)
+    const [breeds, setBreeds] = useState([]);
+    const nameBreed = useSelector(selectBreedFilterByName);
+    const imageCount= useSelector(selectImageCount);
+    const uploadDataSort = useSelector(selectUploadDataOrder);
+    const isModalHomeOpen = useSelector(selectIsModalHomeOpen);
     
     useEffect(() => {
-        const queryParams = {
-            imageCount: imageCount,
-            uploadDataSort: uploadDataSort,
-          };
-
-        getBreeds(queryParams).then((res) => {
+        getBreeds(imageCount, uploadDataSort).then((res) => {
             setBreeds(res);
         });
     }, [nameBreed]);
-
-
-    // const filteredBreeds = nameBreed
-    //     ? breeds.filter((item:any) => item.name.toLowerCase().includes(nameBreed.toLowerCase()))
-    //     : breeds;
 
     const filteredBreeds = nameBreed
     ? breeds.filter((item:any )=> {
@@ -50,7 +35,6 @@ export default function Home() {
 
     const formattedNameBreed = nameBreed.charAt(0).toUpperCase() + nameBreed.slice(1); 
 
-     console.log(filteredBreeds)   
     return (
         <main className="main">
             <div className="container right-blok">
@@ -66,11 +50,9 @@ export default function Home() {
                             {GalleryBreeds(filteredBreeds)}
                         </div>
                     </div>
-                    {ModalHome()} 
+                    {isModalHomeOpen && ModalHome()} 
                 </div>
-
             </div>
         </main>
-
     )
 }

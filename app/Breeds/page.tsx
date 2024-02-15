@@ -2,7 +2,7 @@
 
 import { MainLeft } from '../components/MainLeft/MainLeft';
 import { RightHeader } from '../components/RightHeader/RightHeader';
-import { SubHeader } from '../components/SubHeader';
+import { SubHeader } from '../components/SubHeader/SubHeader';
 import { GalleryBreeds } from '../components/GelleryBreeds/GalleryBreeds';
 import { ModalHome } from '../components/ModalHome/ModalHome';
 import { FilterBreed } from '../components/FilterBreed/FilterBreed';
@@ -12,6 +12,7 @@ import { useState, useEffect} from 'react';
 import { getBreeds}  from '../servises/cats-api-client';
 import {useSelector} from 'react-redux'
 import { selectUploadDataOrder, selectBreedFilter, selectImageCount } from '@/app/GlobalRedux/filterGallerySlice';
+import { selectIsModalHomeOpen } from '@/app/GlobalRedux/filterGallerySlice';
 
 const defaultSelectedBreed = 'All breeds';
 const limitOptions = [5, 10, 15, 20];
@@ -22,18 +23,13 @@ export default function Home() {
     const tabname = "BREEDS";
     const [breeds, setBreeds] = useState([]);
     const breedFilter = useSelector(selectBreedFilter);
-    const imageCount= useSelector(selectImageCount)
-    const uploadDataSort = useSelector(selectUploadDataOrder)
+    const imageCount= useSelector(selectImageCount);
+    const uploadDataSort = useSelector(selectUploadDataOrder);
+    const isModalHomeOpen = useSelector(selectIsModalHomeOpen);
 
 
     useEffect(() => {
-        const queryParams = {
-            breedFilter: breedFilter,
-            imageCount: imageCount,
-            uploadDataSort: uploadDataSort,
-          };
-
-        getBreeds(queryParams).then((res) => {
+        getBreeds(imageCount,uploadDataSort).then((res) => {
             setBreeds(res);
         });
     }, [breedFilter, imageCount, uploadDataSort]);
@@ -71,15 +67,9 @@ export default function Home() {
                                 {GalleryBreeds(filteredItems)}
                         </div>   
                     </div>
-                    {ModalHome()}
+                    {isModalHomeOpen && ModalHome()}
                 </div> 
             </div>
         </main>
     )
 }
-
-
-
-
-
-

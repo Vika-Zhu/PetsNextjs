@@ -1,0 +1,7 @@
+{
+  "/Favourites/page": "app/Favourites/page.js",
+  "/Like/page": "app/Like/page.js",
+  "/Dislikes/page": "app/Dislikes/page.js",
+  "/Voting/page": "app/Voting/page.js",
+  "/Gallery/page": "app/Gallery/page.js"
+}
