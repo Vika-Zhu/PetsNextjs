@@ -2,7 +2,7 @@
 
     
 const nextConfig = {
-    basePath: process.env.NODE_ENV === 'development' ?  '' : '/PetsNextjs',
+    basePath: '/PetsNextjs',
     output: 'export',
     distDir: 'dist',
     images: {
