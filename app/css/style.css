@@ -180,8 +180,8 @@ body{
 .header {
     display: flex;
     gap: 10px;
-
 }
+
 .header__burger{
     display: none;
 }
@@ -189,16 +189,15 @@ body{
 .header_search {
     flex: 0 0 69%;
 }
+
 .search-form {
     max-width: 470px;
     background-color: #FFF;
     border-radius: 20px;
     display: flex;
-    /* gap: 170px; */
     padding: 10px 10px 10px 20px;
     justify-content: space-between;
 }
-
 
 .search-form:hover{
     padding: 8px 8px 8px 18px;
@@ -229,14 +228,14 @@ body{
     height: 40px;
     border-radius: 10px;
     background-color: #FBE0DC;
-    background-image: url(/img/svg/search.svg);
+    background-image: url(/PetsNextjs/img/svg/search.svg);
     background-repeat: no-repeat;
     background-position: 50% 50%;
     
 }
 .search-btn:hover {
     background-color: #FF868E;
-    background-image: url(/img/svg/search_Hover.svg);
+    background-image: url(/PetsNextjs/img/svg/search_Hover.svg);
 }
 .header_links {
     display: flex;
@@ -262,27 +261,25 @@ body{
     pointer-events: none;
 }
 
-
 .link-likes {
-    background-image: url(/img/svg/actions/like.svg);
+    background-image: url(/PetsNextjs/img/svg/actions/like.svg);
 }
 .link-favourites {
-    background-image: url(/img/svg/actions/favourites.svg);
+    background-image: url(/PetsNextjs/img/svg/actions/favourites.svg);
 }
 .link-dislikes {
-    background-image: url(/img/svg/actions/dislike.svg);
+    background-image: url(/PetsNextjs/img/svg/actions/dislike.svg);
 }
 
 .link-likes:active{
-    background-image: url(/img/svg/actions/active/like__active.svg);
+    background-image: url(/PetsNextjs/img/svg/actions/active/like__active.svg);
 }
 .link-favourites:active{
-    background-image: url(/img/svg/actions/active/favo_active.svg);
+    background-image: url(/PetsNextjs/img/svg/actions/active/favo_active.svg);
 }
 .link-dislikes:active{
-    background-image: url(/img/svg/actions/active/dislike_active.svg);
+    background-image: url(/PetsNextjs/img/svg/actions/active/dislike_active.svg);
 }
-
 
 .right__content {
     border-radius: 20px;
@@ -292,6 +289,7 @@ body{
     height: 770px;
     width: 680px;
 }
+
 .content__description{
     margin: 20px 0;
     color: #8C8C8C;
@@ -302,10 +300,6 @@ body{
     color: #1D1D1D;
     font-size: 20px;
     font-weight: 500;
-}
-
-.voting {
-   
 }
 
 .content__header{
@@ -337,12 +331,12 @@ body{
     width: 40px;
     border-radius: 10px;
     background-color:#FBE0DC;
-    background-image: url(/img/svg/arrow\ left\ 1.svg);
+    background-image: url(/PetsNextjs/img/svg/arrow\ left\ 1.svg);
 }
 
 .sub-header__btn-back:hover{
     background-color:#FF868E;
-    background-image: url(/img/svg/arrow\ left_Hover.svg);
+    background-image: url(/PetsNextjs/img/svg/arrow\ left_Hover.svg);
 }
 
 .voting__foto {
@@ -370,21 +364,21 @@ body{
 }
 .btn-likes {
     background-color: #97EAB9;
-    background-image: url(/img/svg/actions/active/like__active.svg);
+    background-image: url(/PetsNextjs/img/svg/actions/active/like__active.svg);
     width: 80px;
     height: 80px;
     border-radius: 20px 0 0 20px; 
 }
 .btn-favourites {
     background-color: #FF868E;
-    background-image: url(/img/svg/actions/active/favo_active.svg);
+    background-image: url(/PetsNextjs/img/svg/actions/active/favo_active.svg);
     width: 80px;
     height: 80px;
 }
 
 .btn-dislikes {
     background-color: #FFD280;
-    background-image: url(/img/svg/actions/active/dislike_active.svg);
+    background-image: url(/PetsNextjs/img/svg/actions/active/dislike_active.svg);
     width: 80px;
     height: 80px;
     border-radius: 0px 20px 20px 0px; 
@@ -392,32 +386,32 @@ body{
 
 .btn-likes:hover{
     background-color: #97EAB94D;
-    background-image: url(/img/svg/voting_action/like_hover.svg);
+    background-image: url(/PetsNextjs/img/svg/voting_action/like_hover.svg);
 }
 .btn-favourites:hover{
     background-color: #FF868E4D;
-    background-image: url(/img/svg/voting_action/favour_hover.svg);
+    background-image: url(/PetsNextjs/img/svg/voting_action/favour_hover.svg);
 }
 
 .btn-dislikes:hover{
     background-color: #FFD2804D;
-    background-image: url(/img/svg/voting_action/dislike_hover.svg);
+    background-image: url(/PetsNextjs/img/svg/voting_action/dislike_hover.svg);
 }
 
 .btn-likes:active{
     background-color: #97EAB9;
-    background-image: url(/img/svg/voting_action/like_active.svg);
+    background-image: url(/PetsNextjs/img/svg/voting_action/like_active.svg);
 
 }
 .btn-favourites:active{
     background-color: #FF868E;
-    background-image: url(/img/svg/voting_action/favour_active.svg);
+    background-image: url(/PetsNextjs/img/svg/voting_action/favour_active.svg);
 
 }
 
 .btn-dislikes:active{
     background-color: #FFD280;
-    background-image: url(/img/svg/voting_action/dislike_activ.svg);
+    background-image: url(/PetsNextjs/img/svg/voting_action/dislike_activ.svg);
 }
 
 
@@ -581,7 +575,7 @@ body{
 .filter__select-breeds::before,
 .filter__select--limit-img::before {
     content: "";
-    background-image: url(/img/svg/arrow\ left\ 2.svg);
+    background-image: url(/PetsNextjs/img/svg/arrow\ left\ 2.svg);
     background-repeat: no-repeat;
     top: 14px;
     right: 10px;
@@ -613,26 +607,26 @@ body{
 }
 
 .filter__buttons button:nth-child(1){
-    background-image: url(/img/svg/breeds/sort_z_a.svg);
+    background-image: url(/PetsNextjs/img/svg/breeds/sort_z_a.svg);
     background-repeat: no-repeat;
     background-position: 64% 50%;
     margin-right: 10px;
 }
 
 .filter__buttons button:nth-child(2){
-    background-image: url(/img/svg/breeds/sort_a-z.svg);
+    background-image: url(/PetsNextjs/img/svg/breeds/sort_a-z.svg);
     background-repeat: no-repeat;
     background-position: 69% 55%;
 }
 
 .filter__buttons button:nth-child(1):hover{
-    background-image: url(/img/svg/breeds/sort_a_z_hover.svg);
+    background-image: url(/PetsNextjs/img/svg/breeds/sort_a_z_hover.svg);
     background-size: 19px 22px; 
     border-radius: 10px;
     border: 2px solid #FBE0DC;
 }
 .filter__buttons button:nth-child(2):hover{
-    background-image: url(/img/svg/breeds/sort_z_a_hover.svg);
+    background-image: url(/PetsNextjs/img/svg/breeds/sort_z_a_hover.svg);
     border-radius: 10px;
     border: 2px solid #FBE0DC;
 }
@@ -787,14 +781,14 @@ body{
     line-height: 133%;
     letter-spacing: 2px;
     margin-left: auto;
-    background-image: url(/img/svg/gallery/upload.svg);
+    background-image: url(/PetsNextjs/img/svg/gallery/upload.svg);
     background-repeat: no-repeat;
     background-position: 23% 50%;
 }   
 
 .nav__btn--upload:hover{
     background: #FF868E;
-    background-image: url(/img/svg/gallery/upload_hover.svg);
+    background-image: url(/PetsNextjs/img/svg/gallery/upload_hover.svg);
     background-repeat: no-repeat;
     background-position: 23% 50%;
     color: #FFF;
@@ -822,7 +816,7 @@ body{
 .filter-section:nth-child(-n+2)::before,
 .filter-section:nth-child(n+3):not(:last-child)::before{
     content: "";
-    background-image: url(/img/svg/arrow\ left\ 2.svg);
+    background-image: url(/PetsNextjs/img/svg/arrow\ left\ 2.svg);
     background-repeat: no-repeat;
     top: 32px;
     right: 10px;
@@ -899,7 +893,7 @@ body{
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    background-image: url(/img/svg/gallery/upload_btnsvg.svg);
+    background-image: url(/PetsNextjs/img/svg/gallery/upload_btnsvg.svg);
     background-position: 50% 50%;
     background-repeat: no-repeat;
     flex: 1 0 40px;
@@ -908,7 +902,7 @@ body{
 }
 .filter-btn:hover{
     background: #FF868E; 
-    background-image: url(/img/svg/gallery/upload_btn-hover.svg);
+    background-image: url(/PetsNextjs/img/svg/gallery/upload_btn-hover.svg);
     background-position: 50% 50%;
     background-repeat: no-repeat;
 }
@@ -940,7 +934,7 @@ body{
     position: absolute;
     background-color: white;
     background-size: 20px 20px;
-    background-image: url(/img/svg/actions/favourites.svg);
+    background-image: url(/PetsNextjs/img/svg/actions/favourites.svg);
     border-radius: 10px;
     top: 50px;
     left: 79px;
@@ -949,7 +943,7 @@ body{
 
 
 .delete-favourite{
-    background-image: url(/img/svg/Fav_color_all.svg);
+    background-image: url(/PetsNextjs/img/svg/Fav_color_all.svg);
 }
 
 .gallery__item:nth-child(10n+1) .gallery_btn-favorite,
@@ -1144,7 +1138,7 @@ body{
     background: #FFFFFF;
     width: 40px;
     height: 40px;
-    background-image: url(/img/svg/close-20.svg);
+    background-image: url(/PetsNextjs/img/svg/close-20.svg);
     background-repeat: no-repeat;
     background-position: 50% 50%;
     margin-left: auto;
@@ -1156,7 +1150,7 @@ body{
     /* border-radius: 10px;
     width: 40px;
     height: 40px; */
-    background-image: url(/img/svg/close-white-20.svg);
+    background-image: url(/PetsNextjs/img/svg/close-white-20.svg);
     background-repeat: no-repeat;
     background-position: 50% 50%;
 }
@@ -1213,7 +1207,7 @@ body{
 }
 
 .upload__window {
-    background-image: url(/img/svg/upload-bg.svg);
+    background-image: url(/PetsNextjs/img/svg/upload-bg.svg);
     background-repeat: no-repeat;
     background-position: 50% 50%;
 }
@@ -1263,7 +1257,7 @@ body{
 
 .upload__status::before{
     content: "";
-    background-image: url(/img/svg/success-upload.svg);
+    background-image: url(/PetsNextjs/img/svg/success-upload.svg);
     background-repeat: no-repeat;
     top: 20px;
     left: 20px;
@@ -1278,7 +1272,7 @@ body{
 
 .upload__status-error::before{
     content: "";
-    background-image: url(/img/svg/error-20_upload.svg);
+    background-image: url(/PetsNextjs/img/svg/error-20_upload.svg);
     background-repeat: no-repeat;
     top: 20px;
     left: 20px;
@@ -1325,7 +1319,7 @@ body{
     width: 60px;
     height: 60px;
     border-radius: 20px;
-    background-image: url(/img/svg/close-white-20.svg);
+    background-image: url(/PetsNextjs/img/svg/close-white-20.svg);
     background-repeat: no-repeat;
     background-position: 50% 50%;
 }
